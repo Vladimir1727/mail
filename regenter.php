@@ -5,10 +5,10 @@ if (isset($_SESSION['user'])){//сессия запущена
 	if (isset($_GET['page'])) echo '?page='.$_GET['page'];
 
 	echo '" class="form-inline" method="post">';
-	echo '<h4>';
-	echo ' Вы вошли как <span id="user_name">'.$_SESSION['user'].'</span></h4>';
-	echo '<p>'.$_SESSION['email'].'</p>';
-	echo '<input type="submit" value="выйти" id="ex" name="ex" class="btn btn-primary">';
+	echo '<h4 class="text-center">';
+	echo ' Вы вошли как <span id="user_name" class="badge">'.$_SESSION['user'].'</span></h4>';
+	echo '<h3 class="text-center">'.$_SESSION['email'].'</h3>';
+	echo '<input type="submit" value="выйти" id="ex" name="ex" class="btn btn-default btn-group-justified">';
 	echo '</form>';
 	if (isset($_POST['ex'])) {//нажата кнопка выхода
 		unset($_SESSION['user']);
@@ -37,9 +37,9 @@ else//сессия не запущена
   						<li class="active"><a href="index.php?page=1">Вход</a></li>
   						<li><a href="index.php?page=2">Регистрация</a></li>
 					</ul>';
-	$txt_form_login='<form action="index.php?page=1" class="input-group" method="post">
-						<input type="text" name="login" class="form-control" placeholder="логин">
-						<input type="password" name="pass"  class="form-control"  placeholder="пароль">
+	$txt_form_login='<form action="index.php?page=1" class="form-group" method="post">
+						<input type="text" name="login" class="form-control" placeholder="логин" id="elogin">
+						<input type="password" name="pass"  class="form-control"  placeholder="пароль" id="epass">
 						<input type="submit" id="enter" value="войти" class="btn btn-primary" name="enter">
 					</form>';
 	if (isset($_GET['page'])){//был выбор страницы

@@ -16,11 +16,11 @@ $pdo=tools::connect();
 </head>
 <body>
 <div class="row">
-	<aside class="col-md-1">
-		<a href="#">Входящие</a>
-		<a href="#">Отправленные</a>
+	<aside class="col-md-2">
+		<a href="#" class="btn btn-default">Входящие</a>
+		<a href="#" class="btn btn-default">Отправленные</a>
 	</aside>
-	<main class="col-md-8">
+	<main class="col-md-7">
 		<?php include_once("mailbox.php"); ?>
 	</main>
 	<aside class="col-md-3">
@@ -31,7 +31,6 @@ $pdo=tools::connect();
 
 ?>
 <script src="js/jquery-2.0.0.min.js"></script>
-<!-- <script src="js/jquery-ui.min.js"></script> -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/less.min.js"></script>
 <script src="js/ajax.js"></script>

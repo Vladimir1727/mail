@@ -1,41 +1,40 @@
 body{
 	font-family: Verdana,Tahoma,Arial,sans-serif;
 }
-footer{
-	/* display: none; */
-	padding-top: 10px;
-	padding-left: 5px;
-	color:#999;
-	background: #000;
-	a{
-		color:#999;
-		
-	}
-	a:hover{
-			color:#fff;
-			text-decoration: none;
+
+input[type="text"],input[type="password"]{
+margin-bottom: 10px;
+}
+
+input[type="submit"]{
+margin: 5px 10px 5px 0;
+}
+.table{
+max-width: 600px;
+	th{
+		cursor:pointer;
+		p{
+		display: none;
 		}
+	}
 }
 
-.navbar{
-	padding: 0;
-	margin: 0;
-	border-radius: 0;
+#t1{
+display: block;
+height: 400px;
+max-width: 600px;
+overflow-y: auto;
+	td{
+	cursor:pointer;
+	}
+	
 }
 
-#myCarousel{
-	margin:0;
+a.btn{
+	width: 150px;
+	margin:10px;
 }
 
-#tabs{ 
-	div{
-		margin-bottom: 10px;
-	}
-	select{
-	height: 33px;
-	}
-	textarea{
-		height: 150px;
-		resize: vertical;
-	}
+#view_mess,#newmess{
+	display:none;
 }
