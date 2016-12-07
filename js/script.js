@@ -1,31 +1,29 @@
 (function($){$(function(){
 
-$.fn.try_add=function(arr){//функция проверки на пустые поля при нажатии кнопки
-var butt=this;
-	butt.click(function(){
-		var f=true;
-		for (var i = arr.length - 1; i >= 0; i--){
-			test=$("#"+arr[i]);
-			if (test.val().length>0) test.val(test.val().trim());
-			if (test.val().trim().length<1 || test.val().trim()=="0"){
-				test.css({"border":"1px red solid"})
-				f=false;
-			}
-			else test.css({"border":"1px #ccc solid"});
-		}
-	if (f==true) return true;
-	return false;
-	});
-}
-
 $.fn.try_press=function(arr){//функция проверки отправки формы
 var butt=this;
 	butt.click(function(){
 		var f=true;
+		var pass_err=false;
+		var pass='';
 		for (var i = arr.length - 1; i >= 0; i--){
-			test=$("#"+arr[i]);
+			test=$("#"+arr[i][0]);
 			if (test.val().length>0) test.val(test.val().trim());
-			if (test.val().trim().length<1 || test.val().trim()=="0"){
+			var reg=0;
+			if (arr[i][1]=='login') reg=test.val().search(/\w{2,}/);
+			if (arr[i][1]=='text') reg=test.val().search(/\w{1,}/);
+			if (arr[i][1]=='email') reg=test.val().search(/\w+@+\w+\.\w{2,5}/i);
+			if (arr[i][1]=='pass'){
+				reg=test.val().search(/\w{3,}/);
+				if (pass=='') pass=test.val();
+					else{
+						if (pass!=test.val()){
+							pass_err=true;
+						}
+					}
+				}
+			if (arr[i][1]=='email') reg=test.val().search(/\w{3,}/);
+			if (test.val().length<1 || test.val()=="0" || reg==-1 || pass_err==true){
 				test.css({"border":"1px red solid"})
 				f=false;
 			}
@@ -36,19 +34,14 @@ var butt=this;
 	});
 }
 
-//вход
-$('#enter').try_press(['elogin','epass']);
+//вход проверка
+$('#enter').try_press([['elogin',"login"],['epass',"pass"]]);
 
-//вкладка категорий
-//$('#add_cat').try_add(['input_cat']);
-//$('#add_sub').try_add(['input_sub','sel_cat1']);
-//вкладка товара
-//$('#add_item').try_add(['itemname','pricein','pricesale','info','sel_cat2','subid','itempic']);
-//вкладка картинки
-//$('#addpics').try_add(['sel_cat3','subid2','itemlist','files']);
-//регистрация
-//$('#adduser').try_add(['pass1','pass2','login','file_pic']);
-//$('#enter').try_add(['login0','pass0']);
+//регистрация проверка
+$('#adduser').try_press([['login1','login'],['pass1','pass'],['pass2','pass'],['email','email']]);
+
+//отправка письма проверка
+$('#msend').try_press([['mto','email'],['mtxt','text'],['mtheme','text']]);
 
 sort('mtxt','f',(document.getElementById('user_name').innerHTML));//сортировка таблицы
 

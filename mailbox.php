@@ -13,10 +13,10 @@ else{
 	echo '<input type="submit" name="del" value="удалить" class="btn btn-danger" id="del">';
 	echo '<input type="submit" name="new" value="новое письмо" class="btn btn-success" id="open_new">';
 	echo '<div id="newmess">';
-	echo '<input type="text" name="mto" placeholder="кому..." class="form-control">';
-	echo '<input type="text" name="mtheme" placeholder="тема..." class="form-control">';
-	echo '<textarea name="mtxt" placeholder="текcт..." class="form-control"></textarea>';
-	echo '<input type="submit" name="send" value="отправить" class="btn btn-success">';
+	echo '<input type="email" name="mto" placeholder="кому..." class="form-control" id="mto">';
+	echo '<input type="text" name="mtheme" placeholder="тема..." class="form-control" id="mtheme">';
+	echo '<textarea name="mtxt" placeholder="текcт..." class="form-control" id="mtxt"></textarea>';
+	echo '<input type="submit" name="send" value="отправить" class="btn btn-success" id="msend">';
 	echo '<input type="submit" name="chancel" value="отменить" class="btn btn-warning">';
 	echo '</div>';
 	echo '</form>';

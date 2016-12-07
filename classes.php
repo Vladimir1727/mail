@@ -19,7 +19,6 @@ class tools
 
 class mess{
 	protected $from,$to,$text,$date,$theme,$user;
-	//public $from,$to,$text,$date,$theme,$user;
 	function __construct($from,$to,$text,$theme){
 		if ($from=='') $this->from=$_SESSION['email']; else $this->from=$from;
 		if ($to=='') $this->to=$_SESSION['email']; else $this->to=$to;
@@ -37,7 +36,7 @@ class mess{
 		$headers = 'From: '.$this->from."\r\n" .
     		'Reply-To: '.$this->from. "\r\n" .
     		'X-Mailer: PHP/' . phpversion();
-		//mail($this->to,$this->theme,$this->text,$headers);
+		mail($this->to,$this->theme,$this->text,$headers);
 	}
 	static function load_all($sort,$dir,$usid){
 		if (!$sort==''){
@@ -46,7 +45,6 @@ class mess{
 		else $order='';
 		tools::setparam('localhost','root','123456','mail');
 		$pdo=tools::connect();
-		//$sel=$pdo->query('select id,mto,mtheme,mdate from outbox where user="'.$usid.'" '.$order);
 		$sel=$pdo->query('select o.id,o.mto,o.mtheme,o.mdate from outbox o, users u where u.login="'.$usid.'" '.$order);
 		while ($row=$sel->fetch()){
 			echo '<tr>';
